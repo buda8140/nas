@@ -1,0 +1,168 @@
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600&family=Montserrat:wght@300;400;500;600;700&family=Great+Vibes&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background: 20 30% 98%;
+    --foreground: 20 10% 12%;
+
+    --card: 20 25% 97%;
+    --card-foreground: 20 10% 12%;
+
+    --popover: 0 0% 100%;
+    --popover-foreground: 20 10% 12%;
+
+    --primary: 345 55% 50%;
+    --primary-foreground: 0 0% 100%;
+
+    --secondary: 20 20% 94%;
+    --secondary-foreground: 20 10% 25%;
+
+    --muted: 20 15% 93%;
+    --muted-foreground: 20 8% 50%;
+
+    --accent: 345 40% 58%;
+    --accent-foreground: 0 0% 100%;
+
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 210 40% 98%;
+
+    --border: 20 15% 88%;
+    --input: 20 15% 90%;
+    --ring: 345 55% 50%;
+
+    --radius: 0.75rem;
+    --gold: 38 60% 55%;
+
+    --sidebar-background: 0 0% 98%;
+    --sidebar-foreground: 240 5.3% 26.1%;
+    --sidebar-primary: 240 5.9% 10%;
+    --sidebar-primary-foreground: 0 0% 98%;
+    --sidebar-accent: 240 4.8% 95.9%;
+    --sidebar-accent-foreground: 240 5.9% 10%;
+    --sidebar-border: 220 13% 91%;
+    --sidebar-ring: 217.2 91.2% 59.8%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+  body {
+    @apply bg-background text-foreground;
+    font-family: 'Montserrat', sans-serif;
+    overflow-x: hidden;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+}
+
+@layer utilities {
+  .font-serif {
+    font-family: 'Cormorant Garamond', serif;
+  }
+  .font-cursive {
+    font-family: 'Great Vibes', cursive;
+  }
+  .font-sans {
+    font-family: 'Montserrat', sans-serif;
+  }
+
+  .text-gradient {
+    background: linear-gradient(135deg, hsl(345 55% 45%), hsl(345 40% 58%), hsl(20 50% 50%));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  .divider {
+    width: 60px;
+    height: 1px;
+    background: hsl(var(--primary) / 0.3);
+  }
+}
+
+@layer components {
+  .editorial-card {
+    background: hsl(0 0% 100% / 0.7);
+    backdrop-filter: blur(20px);
+    border: 1px solid hsl(20 15% 90%);
+    border-radius: 16px;
+    box-shadow: 0 4px 24px hsl(20 10% 50% / 0.06);
+  }
+
+  .photo-card {
+    background: white;
+    border: 1px solid hsl(20 15% 92%);
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow:
+      0 1px 3px hsl(0 0% 0% / 0.04),
+      0 8px 24px hsl(20 10% 50% / 0.06);
+    transition: transform 0.5s cubic-bezier(0.4, 0, 0.2, 1), box-shadow 0.5s ease;
+  }
+  .photo-card:hover {
+    transform: translateY(-4px);
+    box-shadow:
+      0 4px 12px hsl(0 0% 0% / 0.06),
+      0 16px 40px hsl(20 10% 50% / 0.1);
+  }
+
+  .btn-primary {
+    @apply relative overflow-hidden transition-all duration-300;
+    background: hsl(var(--primary));
+    color: white;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 500;
+    letter-spacing: 0.05em;
+    border-radius: 100px;
+    box-shadow: 0 4px 16px hsl(var(--primary) / 0.25);
+  }
+  .btn-primary:hover {
+    transform: translateY(-1px);
+    box-shadow: 0 6px 24px hsl(var(--primary) / 0.35);
+  }
+  .btn-primary:active {
+    transform: translateY(0);
+  }
+
+  .tag {
+    display: inline-block;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 500;
+    font-size: 0.65rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: hsl(var(--primary));
+    border: 1px solid hsl(var(--primary) / 0.2);
+    padding: 4px 16px;
+    border-radius: 100px;
+  }
+
+  .reason-card {
+    background: white;
+    border: 1px solid hsl(20 15% 92%);
+    border-radius: 14px;
+    padding: 20px 24px;
+    transition: all 0.3s ease;
+  }
+  .reason-card:hover {
+    border-color: hsl(var(--primary) / 0.2);
+    box-shadow: 0 8px 24px hsl(var(--primary) / 0.06);
+    transform: translateX(4px);
+  }
+}
+
+/* Subtle sparkle for confetti only, no falling hearts */
+@keyframes fade-up {
+  from { opacity: 0; transform: translateY(24px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.animate-fade-up {
+  animation: fade-up 0.7s ease-out both;
+}
